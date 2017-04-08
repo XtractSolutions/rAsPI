@@ -31,7 +31,7 @@ exports.getOne = function (request, response) {
 
   mysql.connect()
 
-  mysql.query('select answer_id, answer, question_id, deleted where answer_id='+id, function (error, results, fields) {
+  mysql.query('select answer_id, answer, question_id, deleted from answer where answer_id='+id, function (error, results, fields) {
     if (error) {
       response.status(400).send({'error': error})
     } else {
