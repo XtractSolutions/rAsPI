@@ -1,18 +1,23 @@
 'use strict'
 // import controllers
-const systemController = require('./controllers/systemController')
-const exampleController = require('./controllers/exampleController')
+const questionController = require('./controllers/questionController')
+const answerController = require('./controllers/answerController')
 
 // export the routing function for use by server.js
 exports.routes = function (app) {
   /**
-  * System level API routes
+  * Question API routes
   */
-  app.get('/system', systemController.get)
-  app.post('/system', systemController.post)
+  app.get('/question', questionController.get)
+  app.get('/question/:id', questionController.getOne)
+  app.post('/question', questionController.post)
+  app.post('/question/_search', questionController.search)
+  app.put('/question/:id', questionController.put)
+  app.delete('/question/:id', questionController.delete)
 
   /**
-  * Example API routes
+  * Answer API routes
   */
-  app.get('/example', exampleController.get)
+  app.get('/answer/:id', answerController.getOne)
+  app.delete('/answer/:id', answerController.delete)
 }

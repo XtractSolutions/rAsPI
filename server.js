@@ -4,8 +4,16 @@ const swaggerRoutes = require('./docs/swaggerRoutes').routes
 const routes = require('./http/routes').routes
 const bodyParser = require('body-parser')
 const express = require('express')
+var mysql = require('mysql')
 const path = require('path')
 const app = express()
+
+GLOBAL.connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : process.env.MYSQL_PW,
+  database : 'slackbot'
+});
 
 app.use(bodyParser.urlencoded({
   extended: true
