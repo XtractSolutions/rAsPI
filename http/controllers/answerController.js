@@ -25,7 +25,7 @@
  *         error:
  *           type: string
  */
-exports.get = function (request, response) {
+exports.getOne = function (request, response) {
   const id = request.params.id
   const mysql = GLOBAL.connection
 
