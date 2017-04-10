@@ -5,6 +5,7 @@
     "version":"1.0.0",
     "description":"rAsPI is meant to be a general purpose API that can be easily modified and added to for use with raspberry pi projects."
   },
-  "basePath":"localhost:3000",
+  "basePath":"/api",
+  "host":"localhost:3000",
   "schemes":["http"]
 }

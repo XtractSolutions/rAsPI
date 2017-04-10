@@ -1,0 +1,13 @@
+[Unit]
+Description=rAsPI
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/rAsPI/
+ExecStart=/usr/local/bin/node /rAsPI/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

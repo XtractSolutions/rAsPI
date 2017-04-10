@@ -2,6 +2,15 @@
 const execSync = require('child_process').execSync
 
 /*
+ * Register routes to the functions declared in this controller.
+ */
+
+exports.routes = function(app) {
+  //app.get('/api/system', get)
+  //app.post('/api/system', post)
+}
+
+/*
  * @api [get] /system
  * description: This endpoint executes an awk script in the shell_scripts directory which parses a file to return the rAsPI version number.
  * responses:

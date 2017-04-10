@@ -5,11 +5,50 @@
     "version": "1.0.0",
     "description": "rAsPI is meant to be a general purpose API that can be easily modified and added to for use with raspberry pi projects."
   },
-  "basePath": "localhost:3000",
+  "basePath": "/api",
+  "host": "localhost:3000",
   "schemes": [
     "http"
   ],
   "paths": {
+    "/answer/{id}": {
+      "get": {
+        "description": "Get answer by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id to be fetched.",
+            "required": true,
+            "type": "numeric"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object representing an answer",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An error string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/example": {
       "get": {
         "description": "This is an example of how to execute a shell command that requires user input. The rAsPI project contains a directory called shell_scripts with a bash scripted called type_something.sh. When executed, it asks the user to type something and waits for input. Once the user types something and preses enter, it prints back what was typed. This endpoing shows how such a script can be executed via the api.",
@@ -72,14 +111,15 @@
         "parameters": [
           {
             "name": "command",
-            "in": "query",
-            "description": "Command to execute on the system.",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "Shutdown",
-              "Reboot"
-            ]
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": "string",
+                "description": "Command to execute on the system.",
+                "required": true
+              }
+            }
           }
         ],
         "responses": {

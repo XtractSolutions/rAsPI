@@ -1,4 +1,12 @@
 'use strict'
+const db = require('mysql')
+
+/*
+ * Register routes to the functions declared in this controller.
+ */
+exports.routes = function(app) {
+  app.get('/api/answer/:id', getOne)
+}
 
 /*
  * @api [get] /answer/{id}
@@ -25,9 +33,15 @@
  *         error:
  *           type: string
  */
-exports.getOne = function (request, response) {
+const getOne = function (request, response) {
   const id = request.params.id
-  const mysql = GLOBAL.connection
+
+  const mysql = db.createConnection({
+    host     : process.env.QA_DB_HOST,
+    user     : process.env.QA_DB_USER,
+    password : process.env.QA_DB_PW,
+    database : process.env.QA_DB_NAME
+  })
 
   mysql.connect()
 

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "swagger-inline './http/**/*.js' --base './docs/swaggerBase.json' --out './docs/swagger.json'"
+    "build": "swagger-inline './controllers/*.js' --base './docs/swaggerBase.json' --out './docs/swagger.json'"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
     "express": "^4.15.2",
     "mysql": "^2.13.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "source-dot-env": "^0.1.2"
   },
   "devDependencies": {
     "standard": "^9.0.2",
